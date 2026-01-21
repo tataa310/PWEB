@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Makanan Lezat</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Toko Makanan Lezat</h1>
+            <p>Menikmati setiap gigitan dari hidangan terbaik kami!</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- Menu Spesial -->
+        <section id="menu" class="container">
+            <h2>Menu Spesial Hari Ini</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="c:\Users\TOSHIBA ADC\Downloads\nasgor.jpg" alt="Nasi Goreng">
+                    <div class="menu-info">
+                        <h3>Nasi Goreng</h3>
+                        <p class="price">Rp15.000</p>
+                        <p>Nasi goreng dengan ayam, telur, dan sayuran segar yang lezat.</p>
+                        <button class="btn" onclick="addToCart('Nasi Goreng', 15000)">Tambahkan ke Keranjang</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="c:\Users\TOSHIBA ADC\Downloads\mie ayam.jpg" alt="Mie Ayam">
+                    <div class="menu-info">
+                        <h3>Mie Ayam</h3>
+                        <p class="price">Rp12.000</p>
+                        <p>Mie ayam spesial dengan topping daging ayam dan sayuran segar.</p>
+                        <button class="btn" onclick="addToCart('Mie Ayam', 12000)">Tambahkan ke Keranjang</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="c:\Users\TOSHIBA ADC\Downloads\sate ayam.jpeg" alt="Sate Ayam">
+                    <div class="menu-info">
+                        <h3>Sate Ayam</h3>
+                        <p class="price">Rp20.000</p>
+                        <p>Sate ayam empuk dengan saus kacang khas dan lontong, nikmat dan mengenyangkan.</p>
+                        <button class="btn" onclick="addToCart('Sate Ayam', 20000)">Tambahkan ke Keranjang</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="c:\Users\TOSHIBA ADC\Downloads\vnl latte.jpg" alt="Vanilla Latte">
+                    <div class="menu-info">
+                        <h3>Vanilla Latte</h3>
+                        <p class="price">Rp10.000</p>
+                        <p> Minuman kopi yang terbuat dari espresso, susu, dan sirup vanilla.</p>
+                        <button class="btn" onclick="addToCart('Vanilla Latte', 10000)">Tambahkan ke Keranjang</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="c:\Users\TOSHIBA ADC\Downloads\es jeruk2.jfif" alt="Es Jeruk">
+                    <div class="menu-info">
+                        <h3>Es Jeruk</h3>
+                        <p class="price">Rp5.000</p>
+                        <p> Minuman sari buah jeruk yang nikmat dan segar.</p>
+                        <button class="btn" onclick="addToCart('Es Jeruk', 5000)">Tambahkan ke Keranjang</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="c:\Users\TOSHIBA ADC\Downloads\es teh.jpeg" alt="Es Teh">
+                    <div class="menu-info">
+                        <h3>Es Teh</h3>
+                        <p class="price">Rp3.000</p>
+                        <p> Minuman teh yang disajikan dingin dengan es batu.</p>
+                        <button class="btn" onclick="addToCart('Es Teh', 3000)">Tambahkan ke Keranjang</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="c:\Users\TOSHIBA ADC\Downloads\salad buah.jpg" alt="Salad Buah">
+                    <div class="menu-info">
+                        <h3>Salad Buah</h3>
+                        <p class="price">Rp14.000</p>
+                        <p> makanan yang dibuat dari potongan buah dan sirup, dan disajikan dingin.</p>
+                        <button class="btn" onclick="addToCart('Salad Buah', 14000)">Tambahkan ke Keranjang</button>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="c:\Users\TOSHIBA ADC\Downloads\sld sayr.jpg" alt="Salad Sayur">
+                    <div class="menu-info">
+                        <h3>Salad Sayur</h3>
+                        <p class="price">Rp12.000</p>
+                        <p> hidangan yang terdiri dari berbagai jenis sayuran segar dan disajikan mentah.</p>
+                        <button class="btn" onclick="addToCart('Salad Sayur', 12000)">Tambahkan ke Keranjang</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Keranjang Belanja -->
+        <section id="cart" class="container">
+            <h2>Keranjang Belanja</h2>
+            <ul id="cart-items">
+                <!-- Item keranjang akan ditambahkan di sini -->
+            </ul>
+            <p>Total: Rp <span id="total-price">0</span></p>
+            <button id="checkout-btn" onclick="showCheckoutModal()">Lanjutkan Pembayaran</button>
+        </section>
+
+        <!-- Modal Checkout -->
+        <div id="checkout-modal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <h3>Rincian Pembelian</h3>
+                <ul id="modal-cart-items">
+                    <!-- Item keranjang akan ditampilkan di sini -->
+                </ul>
+                <p><strong>Total:</strong> Rp <span id="modal-total-price">0</span></p>
+
+                <!-- Pilihan Pengiriman -->
+                <h4>Pilih Metode Pengiriman</h4>
+                <div class="shipping-options">
+                    <button class="shipping-button" id="pickup-btn" onclick="selectShipping('Ambil Sendiri')">Ambil Sendiri</button>
+                    <button class="shipping-button" id="delivery-btn" onclick="selectShipping('Diantar')">Diantar</button>
+                </div>
+                <p id="shipping-message">Pilih pengiriman</p>
+                
+                <button onclick="completeCheckout()">Konfirmasi Pembayaran</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Toko Makanan Lezat. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="index.js"></script>
+</body>
+</html>
